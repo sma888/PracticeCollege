@@ -64,6 +64,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Brand.cs">
+      <DependentUpon>CarDealershipDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Car.cs">
+      <DependentUpon>CarDealershipDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="CarDealershipDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,13 +85,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CarDealershipDatabase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Client.cs">
+      <DependentUpon>CarDealershipDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Core\Verificate.cs" />
-    <Compile Include="User.cs">
+    <Compile Include="DbEntites\DbSingileton.cs" />
+    <Compile Include="DbEntites\Manager.cs" />
+    <Compile Include="Manager.cs">
+      <DependentUpon>CarDealershipDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sell.cs">
+      <DependentUpon>CarDealershipDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Storage.cs">
       <DependentUpon>CarDealershipDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\AuthViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Page Include="View\MainWindow.xaml">
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\AuthWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -93,10 +114,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="View\AuthWindow.xaml.cs">
+      <DependentUpon>AuthWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -133,19 +158,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="CarDealershipDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CarDealershipDatabase.Context.cs</LastGenOutput>
       <DependentUpon>CarDealershipDatabase.edmx</DependentUpon>
+      <LastGenOutput>CarDealershipDatabase.Context.cs</LastGenOutput>
     </Content>
     <Content Include="CarDealershipDatabase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CarDealershipDatabase.edmx</DependentUpon>
       <LastGenOutput>CarDealershipDatabase.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

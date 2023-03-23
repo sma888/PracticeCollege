@@ -1,12 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище CarDealershipModelContainer" CdmEntityContainer="CarDealershipEntities">
-    <EntitySetMapping Name="User">
-      <EntityTypeMapping TypeName="CarDealershipModel.User">
-        <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+    <EntitySetMapping Name="Brand">
+      <EntityTypeMapping TypeName="CarDealershipModel.Brand">
+        <MappingFragment StoreEntitySet="Brand">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Car">
+      <EntityTypeMapping TypeName="CarDealershipModel.Car">
+        <MappingFragment StoreEntitySet="Car">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="VIN" ColumnName="VIN" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="CarDealershipModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manager">
+      <EntityTypeMapping TypeName="CarDealershipModel.Manager">
+        <MappingFragment StoreEntitySet="Manager">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sell">
+      <EntityTypeMapping TypeName="CarDealershipModel.Sell">
+        <MappingFragment StoreEntitySet="Sell">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="CarID" ColumnName="CarID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Storage">
+      <EntityTypeMapping TypeName="CarDealershipModel.Storage">
+        <MappingFragment StoreEntitySet="Storage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CarID" ColumnName="CarID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

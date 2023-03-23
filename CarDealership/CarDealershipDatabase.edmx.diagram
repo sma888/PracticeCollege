@@ -4,8 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="14d32a5aa2a04b0abac165ef0273c47e" Name="Diagram1">
-        <EntityTypeShape EntityType="CarDealershipModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="06cab67c2735446f90bc7885502eac4c" Name="Diagram1">
+        <EntityTypeShape EntityType="CarDealershipModel.Brand" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipModel.Car" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipModel.Client" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipModel.Manager" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipModel.Sell" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarDealershipModel.Storage" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="CarDealershipModel.FK__Car__BrandID__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipModel.FK__Sell__CarID__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipModel.FK__Storage__CarID__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipModel.FK__Sell__ClientID__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="CarDealershipModel.FK__Sell__ManagerID__403A8C7D" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

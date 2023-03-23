@@ -12,10 +12,12 @@ namespace CarDealership
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Storage
     {
-        public int Id { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public int ID { get; set; }
+        public int CarID { get; set; }
+        public Nullable<int> Amount { get; set; }
+    
+        public virtual Car Car { get; set; }
     }
 }

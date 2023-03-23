@@ -25,6 +25,11 @@ namespace CarDealership
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Brand> Brand { get; set; }
+        public virtual DbSet<Car> Car { get; set; }
+        public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Manager> Manager { get; set; }
+        public virtual DbSet<Sell> Sell { get; set; }
+        public virtual DbSet<Storage> Storage { get; set; }
     }
 }

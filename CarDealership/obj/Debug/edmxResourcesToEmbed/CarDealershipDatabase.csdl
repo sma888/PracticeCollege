@@ -1,14 +1,157 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CarDealershipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="User">
+  <EntityType Name="Brand">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Login" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Password" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Car" Relationship="Self.FK__Car__BrandID__3C69FB99" FromRole="Brand" ToRole="Car" />
   </EntityType>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandID" Type="Int32" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="VIN" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Color" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Brand" Relationship="Self.FK__Car__BrandID__3C69FB99" FromRole="Car" ToRole="Brand" />
+    <NavigationProperty Name="Sell" Relationship="Self.FK__Sell__CarID__412EB0B6" FromRole="Car" ToRole="Sell" />
+    <NavigationProperty Name="Storage" Relationship="Self.FK__Storage__CarID__440B1D61" FromRole="Car" ToRole="Storage" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sell" Relationship="Self.FK__Sell__ClientID__3F466844" FromRole="Client" ToRole="Sell" />
+  </EntityType>
+  <EntityType Name="Manager">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Sell" Relationship="Self.FK__Sell__ManagerID__403A8C7D" FromRole="Manager" ToRole="Sell" />
+  </EntityType>
+  <EntityType Name="Sell">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientID" Type="Int32" />
+    <Property Name="ManagerID" Type="Int32" />
+    <Property Name="CarID" Type="Int32" />
+    <NavigationProperty Name="Car" Relationship="Self.FK__Sell__CarID__412EB0B6" FromRole="Sell" ToRole="Car" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__Sell__ClientID__3F466844" FromRole="Sell" ToRole="Client" />
+    <NavigationProperty Name="Manager" Relationship="Self.FK__Sell__ManagerID__403A8C7D" FromRole="Sell" ToRole="Manager" />
+  </EntityType>
+  <EntityType Name="Storage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CarID" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" />
+    <NavigationProperty Name="Car" Relationship="Self.FK__Storage__CarID__440B1D61" FromRole="Storage" ToRole="Car" />
+  </EntityType>
+  <Association Name="FK__Car__BrandID__3C69FB99">
+    <End Role="Brand" Type="Self.Brand" Multiplicity="1" />
+    <End Role="Car" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sell__CarID__412EB0B6">
+    <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+    <End Role="Sell" Type="Self.Sell" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sell">
+        <PropertyRef Name="CarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Storage__CarID__440B1D61">
+    <End Role="Car" Type="Self.Car" Multiplicity="1" />
+    <End Role="Storage" Type="Self.Storage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Storage">
+        <PropertyRef Name="CarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sell__ClientID__3F466844">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Sell" Type="Self.Sell" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sell">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sell__ManagerID__403A8C7D">
+    <End Role="Manager" Type="Self.Manager" Multiplicity="0..1" />
+    <End Role="Sell" Type="Self.Sell" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manager">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sell">
+        <PropertyRef Name="ManagerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="CarDealershipEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="Brand" EntityType="Self.Brand" />
+    <EntitySet Name="Car" EntityType="Self.Car" />
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Manager" EntityType="Self.Manager" />
+    <EntitySet Name="Sell" EntityType="Self.Sell" />
+    <EntitySet Name="Storage" EntityType="Self.Storage" />
+    <AssociationSet Name="FK__Car__BrandID__3C69FB99" Association="Self.FK__Car__BrandID__3C69FB99">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="Car" EntitySet="Car" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sell__CarID__412EB0B6" Association="Self.FK__Sell__CarID__412EB0B6">
+      <End Role="Car" EntitySet="Car" />
+      <End Role="Sell" EntitySet="Sell" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Storage__CarID__440B1D61" Association="Self.FK__Storage__CarID__440B1D61">
+      <End Role="Car" EntitySet="Car" />
+      <End Role="Storage" EntitySet="Storage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sell__ClientID__3F466844" Association="Self.FK__Sell__ClientID__3F466844">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Sell" EntitySet="Sell" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sell__ManagerID__403A8C7D" Association="Self.FK__Sell__ManagerID__403A8C7D">
+      <End Role="Manager" EntitySet="Manager" />
+      <End Role="Sell" EntitySet="Sell" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

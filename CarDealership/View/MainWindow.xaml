@@ -1,54 +1,46 @@
-﻿<Window x:Class="CarDealership.MainWindow"
+﻿<Window x:Class="CarDealership.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CarDealership"
+        xmlns:local="clr-namespace:CarDealership.View"
         mc:Ignorable="d"
-        
-        Title="MainWindow" MinHeight="450" MinWidth="400" Height="450" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        MinHeight="400"
+        MinWidth="500"
+        Title="Окно вывода данных из бд" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.7*"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Label Content="Автосалон"
-               FontSize="34"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               FontFamily="Times New Roman"/>
-
-        <TextBox Grid.Row="1" 
-                 Margin="42"
-                 VerticalContentAlignment="Center"
-                 Text="{Binding Login}"/>
-
-        <Label Grid.Row="1"
-               Content="Логин:"
-               FontSize="18"
-               Margin="35,0,240,80"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Center"/>
-
-        <PasswordBox Grid.Row="2" 
-                 x:Name="pswBox"
-                 Margin="42"
-                 VerticalContentAlignment="Center"/>
-
-        <Label Grid.Row="2"
-               Content="Пароль:"
-               FontSize="18"
-               Margin="35,0,240,80"/>
-
         <Button 
-                x:Name="btnSign"
-                Grid.Row="3"
-                Width="140"
-                Height="40"
-                Content="Войти"
-                FontSize="16" Click="Button_Click"/>
+            Name="btnAddToDb"
+            
+            Content="Добавить"
+            Width="240"
+            Margin="10"
+            HorizontalAlignment="Right"/>
+
+        <DataGrid
+            Grid.Row="1"
+            IsReadOnly="True"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding Manager}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Имя"
+                    Binding="{Binding FirstName}"
+                    />
+                <DataGridTextColumn
+                    Header="Фамилия"
+                    Binding="{Binding Surname}"
+                    />
+                <DataGridTextColumn
+                    Header="Отчество"
+                    Binding="{Binding MiddleName}"
+                    />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

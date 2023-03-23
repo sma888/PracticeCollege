@@ -1,43 +1,45 @@
-﻿using CarDealership.Core;
-using System.Windows;
+﻿using CarDealership.DbEntites;
+using CarDealership.View;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CarDealership.ViewModel
 {
-    class MainWindowViewModel : BaseViewModel
+    public class MainWindowViewModel:BaseViewModel
     {
-        private string _password;
-        private string _login;
+        private ObservableCollection<Manager> _manager;
 
-        public string Login
+        public ObservableCollection<Manager> Manager
         {
-            get => _login;
+            get => _manager;
             set
             {
-                _login = value;
-                OnPropertyChanged(nameof(Login));
+                _manager = value;
+                OnPropertyChanged(nameof(Manager));
             }
         }
 
-        public string Password
+        public MainWindowViewModel()
         {
-            get => _password;
-            set
-            {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
-            }
+            Manager = new ObservableCollection<Manager>();
+
+            LoadData();
         }
 
-        public void Checking()
+        public void LoadData()
         {
-            var verif = new Verificate();
-            bool res = verif.Check(Login, Password);
-            if (res)
+            if (Manager.Count > 0)
             {
-                MessageBox.Show("Авторизация прошла успешно", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                Manager.Clear();
             }
-            else MessageBox.Show("Неверный логин или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Stop);
+
+            var result = DbSingileton.Db_s.Manager.ToList();
+
+            result.ForEach(elem => Manager?.Add(elem));
         }
     }
 }
-
