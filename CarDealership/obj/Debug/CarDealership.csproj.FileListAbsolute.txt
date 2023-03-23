@@ -70,3 +70,5 @@ D:\Games\ZD\a\a\CarDealership\obj\Debug\CarDealership.Properties.Resources.resou
 D:\Games\ZD\a\a\CarDealership\obj\Debug\CarDealership.csproj.GenerateResource.cache
 D:\Games\ZD\a\a\CarDealership\obj\Debug\CarDealership.csproj.CoreCompileInputs.cache
 D:\Games\ZD\a\a\CarDealership\obj\Debug\CarDealership.csproj.CopyComplete
+D:\Games\ZD\a\a\CarDealership\obj\Debug\View\AddManagerWindow.g.cs
+D:\Games\ZD\a\a\CarDealership\obj\Debug\View\AddManagerWindow.baml

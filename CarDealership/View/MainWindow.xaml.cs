@@ -13,5 +13,10 @@ namespace CarDealership.View
             InitializeComponent();
             this.DataContext = new MainWindowViewModel();
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            (DataContext as MainWindowViewModel).btnAdd_Click(sender, e);
+        }
     }
 }

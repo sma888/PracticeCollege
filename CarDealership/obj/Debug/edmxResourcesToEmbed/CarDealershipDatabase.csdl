@@ -40,7 +40,6 @@
     <Property Name="Surname" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Age" Type="Int32" Nullable="false" />
-    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Sell" Relationship="Self.FK__Sell__ManagerID__403A8C7D" FromRole="Manager" ToRole="Sell" />

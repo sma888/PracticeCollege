@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CarDealership.ViewModel
 {
@@ -40,6 +41,12 @@ namespace CarDealership.ViewModel
             var result = DbSingileton.Db_s.Manager.ToList();
 
             result.ForEach(elem => Manager?.Add(elem));
+        }
+
+        public void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var add = new AddManagerWindow();
+            add.Show();
         }
     }
 }

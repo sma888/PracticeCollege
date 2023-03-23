@@ -38,7 +38,6 @@
           <ScalarProperty Name="Surname" ColumnName="Surname" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
           <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
           <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>

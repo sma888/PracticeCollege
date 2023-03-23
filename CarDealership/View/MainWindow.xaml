@@ -16,7 +16,7 @@
 
         <Button 
             Name="btnAddToDb"
-            
+            Click="btnAdd_Click"
             Content="Добавить"
             Width="240"
             Margin="10"
