@@ -20,11 +20,14 @@ namespace CarDealership.View
     /// </summary>
     public partial class AddManagerWindow : Window
     {
-        public AddManagerWindow()
+        public AddManagerWindow(Manager manager)
         {
             InitializeComponent();
-
-            this.DataContext = new AddManagerWindowViewModel();
+            //boxAge.Text = manager.Age.ToString();
+            //boxName.Text = manager.FirstName;
+            //даже так не заполнился
+            
+            this.DataContext = new AddManagerWindowViewModel(manager);
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

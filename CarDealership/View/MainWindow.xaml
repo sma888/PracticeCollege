@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         MinHeight="400"
         MinWidth="500"
+        WindowStartupLocation="CenterScreen"
         Title="Окно вывода данных из бд" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -14,28 +15,53 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button 
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock 
+                Margin="5,10"
+                FontSize="20" 
+                x:Name="textBlockAccount"
+                HorizontalAlignment="Left"
+               />
+            <StackPanel Grid.Column="1">
+                <Button 
             Name="btnAddToDb"
             Click="btnAdd_Click"
-            Content="Добавить"
+            Content="Добавить/Изменить"
             Width="240"
             Margin="10"
             HorizontalAlignment="Right"/>
 
+                <Button 
+            Name="btnDeleteToDb"
+            Click="btnDeleteToDb_Click"
+            Content="Удалить"
+            Width="240"
+            Margin="10"
+            HorizontalAlignment="Right"/>
+            </StackPanel>
+
+        </Grid>
         <DataGrid
+            x:Name="dataGridView"
             Grid.Row="1"
             IsReadOnly="True"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding Manager}">
+            ItemsSource="{Binding Manager}"
+            SelectedItem="{Binding SelectedManager}">
             <DataGrid.Columns>
-                <DataGridTextColumn
-                    Header="Имя"
-                    Binding="{Binding FirstName}"
-                    />
                 <DataGridTextColumn
                     Header="Фамилия"
                     Binding="{Binding Surname}"
                     />
+                <DataGridTextColumn
+                    Header="Имя"
+                    Binding="{Binding FirstName}"
+                    />
+
                 <DataGridTextColumn
                     Header="Отчество"
                     Binding="{Binding MiddleName}"

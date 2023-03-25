@@ -8,6 +8,7 @@ namespace CarDealership.DbEntites
 {
     public partial class Manager
     {
+
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string Surname { get; set; }
@@ -15,6 +16,7 @@ namespace CarDealership.DbEntites
         public int Age { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+
     }
 }
 

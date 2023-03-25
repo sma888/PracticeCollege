@@ -72,3 +72,4 @@ D:\Games\ZD\a\a\CarDealership\obj\Debug\CarDealership.csproj.CoreCompileInputs.c
 D:\Games\ZD\a\a\CarDealership\obj\Debug\CarDealership.csproj.CopyComplete
 D:\Games\ZD\a\a\CarDealership\obj\Debug\View\AddManagerWindow.g.cs
 D:\Games\ZD\a\a\CarDealership\obj\Debug\View\AddManagerWindow.baml
+D:\Games\ZD\a\a\CarDealership\obj\Debug\CarDealership.csproj.SuggestedBindingRedirects.cache

@@ -1,5 +1,7 @@
 ﻿using CarDealership.Core;
 using CarDealership.View;
+using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace CarDealership.ViewModel
@@ -8,6 +10,7 @@ namespace CarDealership.ViewModel
     {
         private string _password;
         private string _login;
+
 
         public string Login
         {
@@ -32,12 +35,19 @@ namespace CarDealership.ViewModel
         public void Checking()
         {
             var verif = new Verificate();
-            bool res = verif.Check(Login, Password);
-            if (res)
+            var res = verif.Check(Login, Password);
+            if (res.ID != -1)
             {
                 MessageBox.Show("Авторизация прошла успешно", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
-                var main = new MainWindow();
+                MainWindow main = new MainWindow(res);
                 main.Show();
+                foreach (Window wind in Application.Current.Windows)
+                {
+                    if (wind is AuthWindow)
+                    {
+                        wind.Close();
+                    }
+                }
             }
             else MessageBox.Show("Неверный логин или пароль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Stop);
         }
